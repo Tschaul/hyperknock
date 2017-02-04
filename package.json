@@ -1,0 +1,26 @@
+{
+  "name": "hyperknock",
+  "version": "1.0.0",
+  "description": "Virtual Dom + Knockout = <3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tschaul/hyperknock.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tschaul/hyperknock/issues"
+  },
+  "homepage": "https://github.com/Tschaul/hyperknock#readme",
+  "dependencies": {
+    "tko": "^4.0.0-alpha1",
+    "virtual-dom": "^2.1.1"
+  },
+  "devDependencies": {
+    "systemjs": "^0.20.5"
+  }
+}
