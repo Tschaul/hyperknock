@@ -4,39 +4,57 @@ var h = require("./node_modules/virtual-dom/dist/virtual-dom.js").h
 var createElement = require("./node_modules/virtual-dom/dist/virtual-dom.js").create
 var ko = require("./node_modules/knockout/build/output/knockout-latest.js");
 
+function s4(){
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1)
+}
+
 module.exports = function(spec) {
-        var Constructor = function(params, children) {
-            this.params = params;
-            this.children = children;
 
-        };
-        Constructor.prototype.type = "Widget"
-        Constructor.prototype.init = function() {
-            this.vm = new spec.viewmodel(this.params);
-            this.renderedObservable = ko.computed(function(){
-                return spec.template(this.vm,this.children);
-            },this);
+    // var componentId = s4()+s4()+s4()+s4();
 
-            var currentNode = this.renderedObservable()
+    var Constructor = function(params, children) {
+        this.params = params;
+        this.children = children;
+        //console.log("constructor")
+    };
+    Constructor.prototype.type = "Widget";
+    //Constructor.prototype.name = componentId;
+    //Constructor.prototype.id = componentId;
+    Constructor.prototype.init = function() {
+        this.vm = new spec.viewmodel(this.params);
+        this.renderedObservable = ko.computed(function(){
+            return spec.template(this.vm,this.children);
+        },this);
 
-            var rootNode = createElement(currentNode)
+        var currentNode = this.renderedObservable()
 
-            this.renderedObservable.subscribe(function(nextNode){
-                var patches = diff(currentNode, nextNode)
-                rootNode = patch(rootNode, patches)
-                currentNode = nextNode
-            })
+        var rootNode = createElement(currentNode)
 
-            return rootNode;
-        }
+        this.renderedObservable.subscribe(function(nextNode){
+            //console.log("event fired")
+            var patches = diff(currentNode, nextNode)
+            //console.log("diffed")
+            rootNode = patch(rootNode, patches)
+            //console.log("patched")
+            currentNode = nextNode
+        })
 
-        Constructor.prototype.update = function(previous, domNode) {
-            return previous;
-        }
+        //console.log("init")
 
-        Constructor.prototype.destroy = function(domNode) {
-        
-        }
-
-        return Constructor;
+        return rootNode;
     }
+
+    Constructor.prototype.update = function(previous, domNode) {
+        //console.log("update",this.params)
+        // return domNode;
+    }
+
+    Constructor.prototype.destroy = function(domNode) {
+    
+    }
+
+    return Constructor;
+}
+    
