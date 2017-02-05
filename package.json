@@ -26,6 +26,7 @@
     "babel": "^6.5.2",
     "babel-cli": "^6.22.2",
     "babel-plugin-transform-react-jsx": "^6.22.0",
+    "deep-equal": "^1.0.1",
     "serve": "^3.2.2",
     "systemjs": "^0.20.5"
   }
