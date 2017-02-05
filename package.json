@@ -4,7 +4,9 @@
   "description": "Virtual Dom + Knockout = <3",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node node_modules/babel-cli/bin/babel.js --plugins transform-react-jsx index.jsx --out-file index.js",
+    "serve": "node node_modules/serve/bin/serve.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,10 @@
     "virtual-dom": "^2.1.1"
   },
   "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.22.2",
+    "babel-plugin-transform-react-jsx": "^6.22.0",
+    "serve": "^3.2.2",
     "systemjs": "^0.20.5"
   }
 }
