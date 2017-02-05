@@ -113,15 +113,6 @@ var App = createKnockoutComponent({
   }
 });
 
-var myCounter = new App();
-var currentNode = myCounter;
-var rootNode = createElement(currentNode);
-
-// A simple function to diff your widgets, and patch the dom
-var update = function (nextNode) {
-  var patches = diff(currentNode, nextNode);
-  rootNode = patch(rootNode, patches);
-  currentNode = nextNode;
-};
+var rootNode = createElement(hFactory(App, null));
 
 document.body.appendChild(rootNode);
