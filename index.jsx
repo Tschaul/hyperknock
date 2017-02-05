@@ -18,10 +18,12 @@ var LikeWidget = createKnockoutComponent({
   template: function(vm){
     console.log("rendering product")
     if(!vm.chosenValue()){
-      return hFactory("div",{},[
-        <button onclick={function(){vm.like()}}>{"Like it"}</button>,
-        <button onclick={function(){vm.dislike()}}>{"Dislike it"}</button>,
-      ])
+      return (
+        <div>
+          <button onclick={function(){vm.like()}}>{"Like it"}</button>,
+          <button onclick={function(){vm.dislike()}}>{"Dislike it"}</button>,
+        </div>
+      )
     }else{
       return (
         <div>
