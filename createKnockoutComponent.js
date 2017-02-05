@@ -14,9 +14,8 @@ module.exports = function(spec) {
 
     // var componentId = s4()+s4()+s4()+s4();
 
-    var Constructor = function(params, children) {
+    var Constructor = function(params) {
         this.params = params;
-        this.children = children;
         //console.log("constructor")
     };
     Constructor.prototype.type = "Widget";
@@ -25,7 +24,7 @@ module.exports = function(spec) {
     Constructor.prototype.init = function() {
         this.vm = new spec.viewmodel(this.params);
         this.renderedObservable = ko.computed(function(){
-            return spec.template(this.vm,this.children);
+            return spec.template(this.vm);
         },this);
 
         var currentNode = this.renderedObservable()

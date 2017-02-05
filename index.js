@@ -58,8 +58,10 @@ var App = createKnockoutComponent({
 
     self.products = ko.observableArray(); // Start empty
 
+    var pid = 1;
+
     self.addProduct = function() {
-      var name = 'Product ' + (self.products().length + 1);
+      var name = 'Product ' + (pid++);
       console.log(name+" added");
       self.products.push(new Product(name));
     }
