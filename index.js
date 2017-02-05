@@ -22,19 +22,26 @@ var LikeWidget = createKnockoutComponent({
   template: function (vm) {
     console.log("rendering product");
     if (!vm.chosenValue()) {
-      return hFactory("div", {}, [hFactory(
-        "button",
-        { onclick: function () {
-            vm.like();
-          } },
-        "Like it"
-      ), hFactory(
-        "button",
-        { onclick: function () {
-            vm.dislike();
-          } },
-        "Dislike it"
-      )]);
+      return hFactory(
+        "div",
+        null,
+        hFactory(
+          "button",
+          { onclick: function () {
+              vm.like();
+            } },
+          "Like it"
+        ),
+        ",",
+        hFactory(
+          "button",
+          { onclick: function () {
+              vm.dislike();
+            } },
+          "Dislike it"
+        ),
+        ","
+      );
     } else {
       return hFactory(
         "div",

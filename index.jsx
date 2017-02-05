@@ -20,8 +20,8 @@ var LikeWidget = createKnockoutComponent({
     if(!vm.chosenValue()){
       return (
         <div>
-          <button onclick={function(){vm.like()}}>{"Like it"}</button>,
-          <button onclick={function(){vm.dislike()}}>{"Dislike it"}</button>,
+          <button onclick={function(){vm.like()}}>{"Like it"}</button>
+          <button onclick={function(){vm.dislike()}}>{"Dislike it"}</button>
         </div>
       )
     }else{
