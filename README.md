@@ -7,6 +7,29 @@ run `npm run build` to compile jsx to js.
 
 run `npm run serve` to start.
 
+## Basic Idea
+
+```
+var SomeComponent = createKnockoutComponent({
+  viewmodel: function(params){
+    // just a knockout viewmodel ...
+  },
+  template: function(vm){
+    return (
+      <div>
+        // jsx goes here ...
+      </div>
+    )
+  }
+})
+
+var rootNode = createElement(<SomeComponent someParam={...} />)
+
+document.body.appendChild(rootNode)
+```
+
+for more see index.jsx
+
 ## Know Issues / Future Work
 
 ### Foreach
