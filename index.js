@@ -32,15 +32,13 @@ var LikeWidget = createKnockoutComponent({
             } },
           "Like it"
         ),
-        ",",
         hFactory(
           "button",
           { onclick: function () {
               vm.dislike();
             } },
           "Dislike it"
-        ),
-        ","
+        )
       );
     } else {
       return hFactory(
@@ -74,8 +72,8 @@ var App = createKnockoutComponent({
 
     self.removeRandomProduct = function () {
       if (self.products().length > 1) {
-        var rnd = Math.floor(Math.random() * self.products.length);
-        console.log("removing Product " + (rnd + 1));
+        var rnd = Math.floor(Math.random() * self.products().length);
+        console.log("removing " + self.products()[rnd].name);
         self.products.splice(rnd, 1);
       }
     };
